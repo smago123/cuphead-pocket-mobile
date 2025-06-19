@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cuphead Lite - Menú</title>
+  <style>
+    body, html {
+      margin: 0; padding: 0; width: 100%; height: 100%; 
+      font-family: 'Arial', sans-serif; color: white;
+      display: flex; justify-content: center; align-items: center;
+      flex-direction: column;
+      background: black;
+      overflow: hidden;
+    }
+
+    #intro {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+    #intro img {
+      max-width: 80%;
+      max-height: 80%;
+      opacity: 0;
+      transition: opacity 2s ease;
+    }
+
+    #menu {
+      display: none;
+      width: 100%;
+      height: 100%;
+      background: url('imágenes/menu/menú_fondo.jpg') no-repeat center center;
+      background-size: cover;
+      text-align: center;
+      padding-top: 50px;
+      box-sizing: border-box;
+      z-index: 1;
+    }
+
+    #menu h1 {
+      margin-bottom: 30px;
+      font-size: 36px;
+      text-shadow: 2px 2px 5px black;
+    }
+
+    button {
+      width: 200px;
+      padding: 12px;
+      margin: 12px auto;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background-color: rgba(0,0,0,0.5);
+      color: white;
+      transition: background-color 0.3s ease;
+      display: block;
+      box-shadow: 1px 1px 5px black;
+    }
+
+    button:hover {
+      background-color: rgba(255,255,255,0.3);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Intro -->
+  <div id="intro">
+    <img src="imágenes/intro/intro_sma.png" alt="Intro" id="introImg" />
+  </div>
+
+  <!-- Menú -->
+  <div id="menu">
+    <h1>Menú Principal</h1>
+    <button id="btnJugar">Jugar</button>
+    <button id="btnLogros">Logros</button>
+    <button id="btnOpciones">Opciones</button>
+    <button id="btnCuenta">Cuenta</button>
+  </div>
+
+  <script>
+    const introImg = document.getElementById('introImg');
+    const introDiv = document.getElementById('intro');
+    const menuDiv = document.getElementById('menu');
+
+    function fadeInOut() {
+      introImg.style.opacity = 1; // fade in
+      setTimeout(() => {
+        introImg.style.opacity = 0; // fade out después de 3 segundos visible
+      }, 3000);
+
+      setTimeout(() => {
+        introDiv.style.display = 'none'; // ocultar intro
+        menuDiv.style.display = 'block'; // mostrar menú
+      }, 6000);
+    }
+
+    fadeInOut();
+
+    document.getElementById('btnJugar').onclick = () => alert('Iniciando juego...');
+    document.getElementById('btnLogros').onclick = () => alert('Sección Logros');
+    document.getElementById('btnOpciones').onclick = () => alert('Sección Opciones');
+    document.getElementById('btnCuenta').onclick = () => alert('Sección Cuenta');
+  </script>
+
+</body>
+</html>
